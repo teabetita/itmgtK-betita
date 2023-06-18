@@ -112,7 +112,7 @@ def interest(principal, rate, periods):
     final_value = (principal + simple_interest) // 1
     return final_value
 
-print(interest(50000,0.3,2))
+print(interest(5000000,0.3,5))
 
 
 def body_mass_index(weight, height):
@@ -156,4 +156,4 @@ def body_mass_index(weight, height):
     bmi = weight_kg / height_m ** 2
     return bmi
 
-print(body_mass_index(115,[5,8]))
+print(body_mass_index(150,[5,8]))
