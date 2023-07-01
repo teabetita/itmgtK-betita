@@ -33,9 +33,9 @@ def savings(gross_pay, tax_rate, expenses):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    after_tax = (float(gross_pay) * tax_rate) 
+    after_tax = (gross_pay * tax_rate) 
     net_pay = gross_pay - after_tax
-    minus_expenses = net_pay - expenses
+    minus_expenses = float(net_pay - expenses)
     return minus_expenses
 
 print(savings(9000000,0.12,1000000))
@@ -109,7 +109,7 @@ def interest(principal, rate, periods):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     simple_interest = principal * (rate*periods)
-    final_value = (principal + simple_interest) // 1
+    final_value = int(principal + simple_interest)
     return final_value
 
 print(interest(5000000,0.3,5))

@@ -119,24 +119,26 @@ def tic_tac_toe(board):
         if row[0] != "":
             if row.count(row[0]) == len(row):
                 return row[0]
-    
-    for column in board:
-        if board[0][0] == board [0][1] == board[0][2] == board[0][3]:
-            return board[0][0]
-    diagonal1 = [board[x][x] for x in range(len(board))]
-    diagonal2 = [board[x][len(board)-1-x] for x in range(len(board))]
+
+    size = len(board)  # Size of the board
+    for i in range(size):
+        if all(board[j][i] == board[0][i] for j in range(size)):
+            return board[0][i]
+
+    diagonal1 = [board[x][x] for x in range(size)]
+    diagonal2 = [board[x][size - 1 - x] for x in range(size)]
     if diagonal1.count(diagonal1[0]) == len(diagonal1) and diagonal1[0] != '':
         return diagonal1[0]
     if diagonal2.count(diagonal2[0]) == len(diagonal2) and diagonal2[0] != '':
         return diagonal2[0]
-    else:
-        print("no winner")
+
+    return "NO WINNER"
 
 print(tic_tac_toe([
-['X','X','O','O'],
-['O','X','X','O'],
-['X','O','X','O'],
-['O','X','','X']
+['X','X','O',''],
+['O','X','O','O'],
+['X','','','O'],
+['O','X','','']
 ]))
 
 route_map = {

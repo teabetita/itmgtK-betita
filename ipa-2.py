@@ -44,7 +44,7 @@ def shift_letter(letter, shift):
         shifted_letter = alphabet[index_shifted]
         return shifted_letter
     else:
-        print("no letter breh")
+        return " "
 
 print(shift_letter("A",19))
 print(shift_letter("Z",5))
@@ -79,14 +79,14 @@ def caesar_cipher(message, shift):
         if letter == " ":
             message_shifted += " "
         else:
-            index_letter = alphabet.index(letter)
+            index_letter = alphabet.index(letter.lower())
             index_shifted = (index_letter + shift) % 26
-            shifted_letters = alphabet[index_shifted]
-            message_shifted += shifted_letters
+            shifted_letter = alphabet[index_shifted]
+            message_shifted += shifted_letter
 
-    return message_shifted.lower()
+    return message_shifted
 
-print(caesar_cipher("tea is the coolest ever", 5))
+print(caesar_cipher("TEA IS THE COOLEST", 10))
 print("-----")
 
 def shift_by_letter(letter, letter_shift):
@@ -124,12 +124,10 @@ def shift_by_letter(letter, letter_shift):
         index_shifted = (index_letter + letter_to_number) % 26
         shifted_letter = alphabet[index_shifted]
         return shifted_letter
-    elif letter_shift == " ":
-        print("no letter breh")
     else:
-        print("no letter breh")
+        return " "
 
-print(shift_by_letter("A","C"))
+print(shift_by_letter("B", "E"))
 print("-----")
 
 def vigenere_cipher(message, key):
@@ -163,28 +161,26 @@ def vigenere_cipher(message, key):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    
-    #sample: message = betita 6
-    #sample: replace = tea 3
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     repeated_key = key * (len(message) // len(key) + 1) + key[:len(message) % len(key)]
     final_message = ""
-    key_index = 0
 
     for x in range(len(message)):
         if message[x] != " ":
-            index_message = alphabet.index(message[x])
-            index_key = alphabet.index(repeated_key[x])
+            index_message = alphabet.index(message[x].lower())
+            index_key = alphabet.index(repeated_key[x].lower())
             index_shift = (index_message + index_key) % 26
-            message_to_key = alphabet[index_shift]
-            final_message += message_to_key
+            shifted_letter = alphabet[index_shift]
+            final_message += shifted_letter
         else:
             final_message += " "
-    
+
     return final_message
 
-print(vigenere_cipher("kendall roman and shiv roy", "hi"))
+print(vigenere_cipher("KENDALL ROMAN and SHIV ROY", "poop"))
 print("-----")
+
     
 def scytale_cipher(message, shift):
     '''Scytale Cipher.
@@ -293,8 +289,6 @@ def scytale_decipher(message, shift):
     for y in range(columns):
         for x in range(rows):
             non_gibberish += grid[x][y]
-
-    non_gibberish = non_gibberish.replace("_"," ")
 
     return non_gibberish
 
