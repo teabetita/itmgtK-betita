@@ -72,14 +72,13 @@ def caesar_cipher(message, shift):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
     message_shifted = ""
 
     for letter in message:
         if letter == " ":
             message_shifted += " "
         else:
-            index_letter = alphabet.index(letter.lower())
+            index_letter = alphabet.index(letter)
             index_shifted = (index_letter + shift) % 26
             shifted_letter = alphabet[index_shifted]
             message_shifted += shifted_letter
@@ -130,9 +129,10 @@ def shift_by_letter(letter, letter_shift):
 print(shift_by_letter("B", "E"))
 print("-----")
 
+
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
-    15 points.
+     15 points.
 
     Encrypts a message using a keyphrase instead of a static number.
     Every letter in the message is shifted by the number represented by the
@@ -159,29 +159,25 @@ def vigenere_cipher(message, key):
     str
         the message, shifted appropriately.
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
     repeated_key = key * (len(message) // len(key) + 1) + key[:len(message) % len(key)]
     final_message = ""
 
     for x in range(len(message)):
         if message[x] != " ":
-            index_message = alphabet.index(message[x].lower())
-            index_key = alphabet.index(repeated_key[x].lower())
+            index_message = alphabet.index(message[x])
+            index_key = alphabet.index(repeated_key[x])
             index_shift = (index_message + index_key) % 26
             shifted_letter = alphabet[index_shift]
             final_message += shifted_letter
         else:
             final_message += " "
 
-    return final_message
+    return final_message.upper()  # Convert to uppercase
 
-print(vigenere_cipher("KENDALL ROMAN and SHIV ROY", "poop"))
+print(vigenere_cipher("KENDALL ROMAN AND SHIV ROY", "POOP"))
 print("-----")
 
-    
 def scytale_cipher(message, shift):
     '''Scytale Cipher.
     15 points.
@@ -232,8 +228,6 @@ def scytale_cipher(message, shift):
     str
         the encoded message
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
     if len(message) % shift != 0:
         message += "_" * (shift - (len(message) % shift))
 
@@ -241,10 +235,10 @@ def scytale_cipher(message, shift):
     for x in range(len(message)):
         index = (x // shift) + (len(message) // shift) * (x % shift)
         gibberish += message[index]
-    
-    return gibberish
 
-print(scytale_cipher("i love jbizzle and boniver", 10))
+    return gibberish.upper()  # Convert to uppercase
+
+print(scytale_cipher("JUSTIN_BIEBER", 10))
 print("-----")
 
 def scytale_decipher(message, shift):
@@ -272,8 +266,6 @@ def scytale_decipher(message, shift):
     str
         the decoded message
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
     rows = len(message) // shift
     columns = shift
 
@@ -290,6 +282,6 @@ def scytale_decipher(message, shift):
         for x in range(rows):
             non_gibberish += grid[x][y]
 
-    return non_gibberish
+    return non_gibberish.upper()  
 
-print(scytale_decipher("ivjzenbir_lebz_dov__o_ila_ne__", 10))
+print(scytale_decipher("JSI_IBR___UTNBEE____", 10))

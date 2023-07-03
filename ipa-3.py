@@ -114,9 +114,8 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    
     for row in board:
-        if row[0] != "":
+        if row[0] != ' ':
             if row.count(row[0]) == len(row):
                 return row[0]
 
@@ -127,9 +126,9 @@ def tic_tac_toe(board):
 
     diagonal1 = [board[x][x] for x in range(size)]
     diagonal2 = [board[x][size - 1 - x] for x in range(size)]
-    if diagonal1.count(diagonal1[0]) == len(diagonal1) and diagonal1[0] != '':
+    if diagonal1.count(diagonal1[0]) == len(diagonal1) and diagonal1[0] != ' ':
         return diagonal1[0]
-    if diagonal2.count(diagonal2[0]) == len(diagonal2) and diagonal2[0] != '':
+    if diagonal2.count(diagonal2[0]) == len(diagonal2) and diagonal2[0] != ' ':
         return diagonal2[0]
 
     return "NO WINNER"
