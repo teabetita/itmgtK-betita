@@ -130,8 +130,9 @@ def tic_tac_toe(board):
         return diagonal1[0]
     if diagonal2.count(diagonal2[0]) == len(diagonal2) and diagonal2[0] != ' ':
         return diagonal2[0]
-
-    return "NO WINNER"
+    
+    else:
+        return "NO WINNER"
 
 print(tic_tac_toe([
 ['X','X','O',''],
