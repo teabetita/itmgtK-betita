@@ -131,14 +131,13 @@ def tic_tac_toe(board):
     if diagonal2.count(diagonal2[0]) == len(diagonal2) and diagonal2[0] != ' ':
         return diagonal2[0]
     
-    else:
-        return "NO WINNER"
+    return "NO WINNER"
 
 print(tic_tac_toe([
-['X','X','O',''],
-['O','X','O','O'],
-['X','','','O'],
-['O','X','','']
+['X','O','O','X'],
+['X','X','O','O'],
+['X','O','X','O'],
+['O','X','O','O']
 ]))
 
 route_map = {
