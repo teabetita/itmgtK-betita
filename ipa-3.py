@@ -121,9 +121,14 @@ def tic_tac_toe(board):
 
     size = len(board)  # Size of the board
     for i in range(size):
-        if all(board[j][i] == board[0][i] for j in range(size)):
+        vertical_win = True
+        for j in range(1, size):
+            if board[j][i] != board[0][i]:
+                vertical_win = False
+                break
+        if vertical_win:
             return board[0][i]
-
+        
     diagonal1 = [board[x][x] for x in range(size)]
     diagonal2 = [board[x][size - 1 - x] for x in range(size)]
     if diagonal1.count(diagonal1[0]) == len(diagonal1) and diagonal1[0] != ' ':
