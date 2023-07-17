@@ -114,29 +114,56 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    for row in board:
-        if row[0] != ' ':
-            if row.count(row[0]) == len(row):
-                return row[0]
-
-    size = len(board)  # Size of the board
-    for i in range(size):
-        vertical_win = True
-        for j in range(1, size):
-            if board[j][i] != board[0][i]:
-                vertical_win = False
-                break
-        if vertical_win:
-            return board[0][i]
-        
-    diagonal1 = [board[x][x] for x in range(size)]
-    diagonal2 = [board[x][size - 1 - x] for x in range(size)]
-    if diagonal1.count(diagonal1[0]) == len(diagonal1) and diagonal1[0] != ' ':
-        return diagonal1[0]
-    if diagonal2.count(diagonal2[0]) == len(diagonal2) and diagonal2[0] != ' ':
-        return diagonal2[0]
+    size = len(board)
+    checklist = []
+    win = False 
     
-    return "NO WINNER"
+    for row in range(size):
+        checkset = set(board[row])
+        if len(checkset) == 1 and '' not in checkset:
+            win = True
+            return checkset.pop()
+        else:
+            win = False
+ 
+    for row in range(size):
+        for column in range(size):
+            checklist.append(board[column][row])
+        
+        checkset = set(checklist)
+        checklist = []
+        if len(checkset) == 1 and '' not in checkset:
+            win = True 
+            return checkset.pop()
+        else:
+            win = False
+
+    for leftdiag in range(size):
+        checklist.append(board[leftdiag][leftdiag])
+        
+    checkset = set(checklist)
+    if len(checkset) == 1 and '' not in checklist:
+        win = True
+        return checkset.pop() 
+    
+    checklist = []
+    
+    rightdiag = size - 1
+    col = 0
+    while rightdiag != -1:
+        checklist.append(board[col][rightdiag])
+        col += 1
+        rightdiag -= 1    
+    
+    checkset = set(checklist)
+    if len(checkset) == 1 and '' not in checklist:
+        win = True 
+        return checkset.pop()
+    
+    checklist = []
+ 
+    if win == False:
+        return("NO WINNER")
 
 print(tic_tac_toe([
 ['X','O','O','X'],
